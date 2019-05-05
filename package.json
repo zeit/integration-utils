@@ -1,0 +1,22 @@
+{
+ "name": "@zeit/addons",
+ "version": "1.0.0",
+ "description": "Addons for ZEIT",
+ "main": "./dist/src/index.js",
+ "types": "./dist/src/index.d.ts",
+ "files": [
+  "./dist/src/**"
+ ],
+ "repository": "zeit/addons",
+ "license": "MIT",
+ "scripts": {
+  "dev": "now dev",
+  "build": "tsc",
+  "watch": "tsc --watch",
+  "test": "tsc && node ./dist/test"
+ },
+ "devDependencies": {
+  "@types/node": "11.12.0",
+  "typescript": "3.3.4000"
+ }
+}
