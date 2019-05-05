@@ -47,3 +47,10 @@ module.exports = withUiHook(async (options) => {
 });
 
 ```
+
+This middleware calls the handler with an object containing following entities:
+
+* [payload](./src/types.ts#L9) - the information related uiHook
+* [zeitClient](./src/zeit-client.ts) - initialized API client for ZEIT with some helpers
+
+
