@@ -2,9 +2,7 @@
  "compilerOptions": {
   "declaration": true,
   "esModuleInterop": true,
-  "lib": [
-   "esnext"
-  ],
+  "lib": ["esnext"],
   "module": "commonjs",
   "moduleResolution": "node",
   "noEmitOnError": true,
@@ -12,15 +10,9 @@
   "noImplicitReturns": true,
   "noUnusedLocals": true,
   "noUnusedParameters": true,
-  "outDir": "./dist",
-  "types": [
-   "node"
-  ],
+  "outDir": "./lib",
+  "types": ["node"],
   "strict": true,
-  "target": "esnext",
-  "typeRoots": [
-   "./types",
-   "./node_modules/@types"
-  ]
+  "target": "esnext"
  }
 }

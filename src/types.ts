@@ -20,3 +20,4 @@ export interface FetchOptions extends RequestInit {
   data?: object;
 }
 
+export { ZeitClient };
