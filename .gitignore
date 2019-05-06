@@ -3,4 +3,5 @@ node_modules
 *.tgz
 .env
 .next
+lib
 

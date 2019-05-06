@@ -6,7 +6,7 @@ import uid from 'uid-promise';
 
 type Handler = (handlerOptions: HandlerOptions) => Promise<string>;
 
-export function withUiHook(handler: Handler) {	
+export function withUiHook(handler: Handler) {
   return async function(req: IncomingMessage, res: ServerResponse) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
@@ -44,3 +44,6 @@ export function withUiHook(handler: Handler) {
 		}
   };
 }
+
+export * from './types'
+
