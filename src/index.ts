@@ -42,7 +42,7 @@ export function withUiHook(handler: Handler) {
 				<Page>
 					<Box/>
 					<Box color="red">
-						<Box fontSize="18px" fontWeight="600">Addon Loading Error</Box>
+						<Box fontSize="18px" fontWeight="600">UiHook Loading Error</Box>
 						<Box>Reference Code: ${code}</Box>
 					</Box>
 				</Page>
