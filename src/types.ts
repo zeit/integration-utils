@@ -7,17 +7,17 @@ export interface HandlerOptions {
 }
 
 export interface UiHookPayload {
-  action: string;
-  token: string;
-  teamId: string | null;
-  slug: string;
-  projectId?: string | null;
-  clientState: any;
+	action: string;
+	token: string;
+	teamId: string | null;
+	slug: string;
+	projectId?: string | null;
+	clientState: any;
 	query: any;
 }
 
 export interface FetchOptions extends RequestInit {
-  data?: object;
+	data?: object;
 }
 
 export { ZeitClient };
