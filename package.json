@@ -1,12 +1,12 @@
 {
- "name": "@zeit/addons",
- "version": "2.0.0",
- "description": "Addons for ZEIT",
+ "name": "@zeit/integration-utils",
+ "version": "0.0.0",
+ "description": "A set of utlities for ZEIT Integrtions",
  "main": "lib/index.js",
  "files": [
   "lib"
  ],
- "repository": "zeit/addons",
+ "repository": "zeit/integration-utils",
  "license": "MIT",
  "scripts": {
   "prepublishOnly": "yarn build",

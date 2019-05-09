@@ -13,6 +13,7 @@ export interface UiHookPayload {
 	slug: string;
 	projectId?: string | null;
 	clientState: any;
+	installationUrl: string;
 	query: any;
 }
 

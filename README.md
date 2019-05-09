@@ -1,21 +1,21 @@
-# @zeit/addons
+# @zeit/integration-utils
 
-[![npm](https://badgen.net/npm/v/@zeit/addons)](https://www.npmjs.com/package/@zeit/addons) [![install size](https://badgen.net/packagephobia/install/@zeit/addons)](https://packagephobia.now.sh/result?p=@zeit/addons) [![cicleci](https://badgen.net/circleci/github/zeit/addons)](https://circleci.com/gh/zeit/workflows/addons) [![codecov](https://badgen.net/codecov/c/github/zeit/addons)](https://circleci.com/gh/zeit/workflows/addons)
+[![npm](https://badgen.net/npm/v/@zeit/integration-utils)](https://www.npmjs.com/package/@zeit/integration-utils) [![install size](https://badgen.net/packagephobia/install/@zeit/integration-utils)](https://packagephobia.now.sh/result?p=@zeit/integration-utils) [![cicleci](https://badgen.net/circleci/github/zeit/integration-utils)](https://circleci.com/gh/zeit/workflows/integration-utils) [![codecov](https://badgen.net/codecov/c/github/zeit/integration-utils)](https://circleci.com/gh/zeit/workflows/integration-utils)
 
-A set of utilies for ZEIT Addons.<br/>
-Vist https://zeit.co/docs/addons for more details.
+A set of utilies for ZEIT Integrations.<br/>
+Vist https://zeit.co/docs/integrations for more details.
 
 ## Install
 
 ```
-yarn add @zeit/addons
+yarn add @zeit/integrations
 ```
 
 ## Middleware for Micro / Now v2
 
-This middleware helps to write UiHook for ZEIT addons easily.
+This middleware helps to write UiHook for ZEIT integrations easily.
 ```js
-const {withUiHook} = require('@zeit/addons');
+const {withUiHook} = require('@zeit/integration-utils');
 
 module.exports = withUiHook(async (options) => {
 	const {payload, zeitClient} = options;
