@@ -17,8 +17,12 @@ export default class ZeitClient {
 
 	fetch(path: string, options: FetchOptions) {
 		let apiPath = `https://zeit.co/api${path}`;
+
 		if (this.options.teamId) {
-			apiPath += `?teamId=${this.options.teamId}`;
+			const e = encodeURIComponent;
+			apiPath = apiPath.includes('?')
+				? `${apiPath}&teamId=${e(this.options.teamId)}`
+				: `${apiPath}?teamId=${e(this.options.teamId)}`;
 		}
 
 		options.headers = options.headers || {
