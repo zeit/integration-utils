@@ -23,6 +23,7 @@
   "typescript": "3.3.4000"
  },
  "dependencies": {
+  "htm": "2.1.1",
   "micro": "9.3.4",
   "node-fetch": "2.5.0",
   "uid-promise": "1.1.0"

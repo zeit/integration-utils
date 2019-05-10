@@ -3,8 +3,9 @@ import { json as getJsonBody, send } from 'micro';
 import { UiHookPayload, HandlerOptions } from './types';
 import ZeitClient from './zeit-client';
 import uid from 'uid-promise';
+import { renderAST } from './htm';
 
-type Handler = (handlerOptions: HandlerOptions) => Promise<string>;
+type Handler = (handlerOptions: HandlerOptions) => Promise<any>;
 
 export function withUiHook(handler: Handler) {
 	return async function(req: IncomingMessage, res: ServerResponse) {
@@ -30,8 +31,13 @@ export function withUiHook(handler: Handler) {
 			const payload = (await getJsonBody(req)) as UiHookPayload;
 			const { token, teamId, slug } = payload;
 			const zeitClient = new ZeitClient({ token, teamId, slug });
-			const jsxString = await handler({ payload, zeitClient });
-			send(res, 200, jsxString);
+			const output = await handler({ payload, zeitClient });
+			if (output.isAST === true) {
+				const renderedAST = renderAST(output);
+				return send(res, 200, renderedAST);
+			}
+
+			return send(res, 200, String(output));
 		} catch (err) {
 			const code = await uid(20);
 			console.error(`Error on UiHook[${code}]: ${err.stack}`);
@@ -53,3 +59,4 @@ export function withUiHook(handler: Handler) {
 }
 
 export * from './types';
+export * from './htm';
