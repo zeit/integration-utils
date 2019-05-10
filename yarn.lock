@@ -46,6 +46,11 @@ depd@1.1.1:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.1.tgz#5783b4e1c459f06fa5ca27f991f3d06e7a310359"
   integrity sha1-V4O04cRZ8G+lyif5kfPQbnoxA1k=
 
+htm@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/htm/-/htm-2.1.1.tgz#5a53e5f2845c3181b1672f95c9bffaf3d621bb0e"
+  integrity sha512-jgvB9nvlOE5xpI1W+juW8DPCe+Pn7mRDNaE4EOQNFqROm0O3l5deOvefK8C8hUaL1OHIX45mDEBSj7BMt+22VQ==
+
 http-errors@1.6.2:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.6.2.tgz#0a002cc85707192a7e7946ceedc11155f60ec736"
