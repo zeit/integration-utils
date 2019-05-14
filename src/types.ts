@@ -8,13 +8,15 @@ export interface HandlerOptions {
 
 export interface UiHookPayload {
 	action: string;
-	token: string;
-	teamId: string | null;
-	slug: string;
-	projectId?: string | null;
 	clientState: any;
 	installationUrl: string;
-	query: any;
+	projectId?: string | null;
+	query: {[key: string]: string | number | string[]};
+	slug: string;
+	teamId: string | null;
+	token: string;
+	user: { id: string, username: string, email: string, name: string, profiles: any[], },
+	team?: { id: string, slug: string, name: string, description: string, } | null,
 }
 
 export interface FetchOptions extends RequestInit {
