@@ -29,19 +29,16 @@ export function renderAST(node: any) {
 	return `<${type} ${propsString}>${childrenStr}</${type}>`;
 }
 
-function escapeContent(value: any) {
-	const stringValue = String(value);
-	var map: { [key: string]: string } = {
-		'&': '&amp;',
-		'<': '&lt;',
-		'>': '&gt;',
-		'"': '"',
-		"'": "'"
-	};
+function escapeContent(node: any) {
+	const lines = node.split('\n');
+	const value = lines
+		.map((line: string, index: number) => {
+			const nl = index < lines.length - 1 ? '\n' : '';
+			return `{${JSON.stringify(line + nl)}}`;
+		})
+		.join('');
 
-	return stringValue.replace(/[&<>"']/g, function(m) {
-		return map[m];
-	});
+	return value;
 }
 
 function escapePropValue(value: any) {
