@@ -1,6 +1,14 @@
 import htmCore from 'htm';
 
 export function renderAST(node: any) {
+	if (node === null) {
+		return 'null';
+	}
+
+	if (node === undefined) {
+		return 'undefined';
+	}
+
 	if (typeof node === 'string') {
 		return escapeContent(node);
 	}
