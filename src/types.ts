@@ -13,6 +13,8 @@ export interface UiHookPayload {
 	projectId?: string | null;
 	query: {[key: string]: string | number | string[]};
 	slug: string;
+	integrationId: string;
+	configurationId: string;
 	teamId: string | null;
 	token: string;
 	user: { id: string, username: string, email: string, name: string, profiles: any[], },

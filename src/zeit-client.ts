@@ -5,6 +5,8 @@ import { FetchOptions } from './types';
 interface ClientOptions {
 	token: string;
 	teamId: string | null | undefined;
+	integrationId: string;
+	configurationId: string;
 	slug: string;
 }
 
@@ -54,15 +56,15 @@ export default class ZeitClient {
 	}
 
 	getMetadata() {
-		const metadataApiEndpoint = `/v1/integrations/installation/${
-			this.options.slug
+		const metadataApiEndpoint = `/v1/integrations/configuration/${
+			this.options.configurationId
 		}/metadata`;
 		return this.fetchAndThrow(metadataApiEndpoint, { method: 'GET' });
 	}
 
 	setMetadata(data: object) {
-		const metadataApiEndpoint = `/v1/integrations/installation/${
-			this.options.slug
+		const metadataApiEndpoint = `/v1/integrations/configuration/${
+			this.options.configurationId
 		}/metadata`;
 		return this.fetchAndThrow(metadataApiEndpoint, {
 			method: 'POST',
