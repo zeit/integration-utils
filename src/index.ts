@@ -50,7 +50,7 @@ export function withUiHook(handler: Handler) {
 					<Box color="red">
 						<Box fontSize="18px" fontWeight="600">Internal Integration Error</Box>
 						<Box fontWeight="500">Reference Code: ${code}</Box>
-						<Box fontSize="12px" lineHeight="15px">Contact the Integration creator for more information.</Box>
+						<Box fontSize="12px" lineHeight="15px">Contact the Integration developer for more information.</Box>
 					</Box>
 				</Page>
 			`
