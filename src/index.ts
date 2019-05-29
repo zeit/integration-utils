@@ -7,6 +7,44 @@ import { renderAST } from './htm';
 
 type Handler = (handlerOptions: HandlerOptions) => Promise<any>;
 
+function getWelcomeMessage() {
+	return `
+		<html>
+			<head>
+				<style>
+					body{
+						font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+						text-rendering: optimizeLegibility;
+						line-height: 25px;
+						text-align: center;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+					}
+
+					a {
+					  color: #067df7;
+						text-decoration: none;
+						border-bottom: 1px solid;
+					}
+
+					a:hover {
+						opacity: 0.6;
+					}
+				</style>
+			</head>
+			<body>
+				<h1>This is a UIHook for ZEIT Integrations</h1>
+				<p>
+					UIHooks work only with HTTP POST.
+					<br/>
+					Visit <a href="https://zeit.co/docs/integrations#creating-an-integration/step-3-creating-your-integration">here</a> to learn how to configure this endpoint as a UIHook.
+				</p>
+			</body>
+		</html>
+	`
+}
+
 export function withUiHook(handler: Handler) {
 	return async function(req: IncomingMessage, res: ServerResponse) {
 		res.setHeader('Access-Control-Allow-Origin', '*');
@@ -21,6 +59,10 @@ export function withUiHook(handler: Handler) {
 
 		if (req.method === 'OPTIONS') {
 			return send(res, 200);
+		}
+
+		if (req.method === 'GET') {
+			return send(res, 200, getWelcomeMessage());
 		}
 
 		if (req.method !== 'POST') {
