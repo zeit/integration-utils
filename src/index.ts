@@ -34,11 +34,11 @@ function getWelcomeMessage() {
 				</style>
 			</head>
 			<body>
-				<h1>This is a UIHook for ZEIT Integrations</h1>
+				<h1>This is a ZEIT Integration UIHook!</h1>
 				<p>
-					UIHooks work only with HTTP POST.
+					Next, this UIHook needs to accept HTTP POST requests.
 					<br/>
-					Visit <a href="https://zeit.co/docs/integrations#creating-an-integration/step-3-creating-your-integration">here</a> to learn how to configure this endpoint as a UIHook.
+					To learn more about that, <a href="https://zeit.co/docs/integrations#creating-an-integration/step-3-creating-your-integration">click here</a>.
 				</p>
 			</body>
 		</html>
