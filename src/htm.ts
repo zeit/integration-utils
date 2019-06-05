@@ -1,5 +1,37 @@
 import htmCore from 'htm';
 
+export const ZeitComponentTypes: string[] = [
+	'Option',
+	'Fieldset',
+	'Button',
+	'HR',
+	'B',
+	'P',
+	'BR',
+	'H1',
+	'H2',
+	'Select',
+	'Textarea',
+	'Input',
+	'Img',
+	'Code',
+	'UL',
+	'LI',
+	// zeit tags
+	'FsContent',
+	'FsFooter',
+	'FsTitle',
+	'Notice',
+	'Box',
+	'ProjectSwitcher',
+	'ClientState',
+	'Checkbox',
+	'Link',
+	'AutoRefresh',
+	'Page',
+	'Container'
+];
+
 export function renderAST(node: any) {
 	if (node === null) {
 		return 'null';
@@ -23,10 +55,16 @@ export function renderAST(node: any) {
 	}
 
 	const { type, propsString, children } = node;
+
+	const filteredType =
+		ZeitComponentTypes.find(
+			name => name.toLowerCase() === type.toLowerCase() && name !== type
+		) || type;
+
 	const childrenStr = children
 		.map((child: any) => renderAST(child))
 		.join('\n');
-	return `<${type} ${propsString}>${childrenStr}</${type}>`;
+	return `<${filteredType} ${propsString}>${childrenStr}</${filteredType}>`;
 }
 
 function escapeContent(node: any) {
