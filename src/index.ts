@@ -7,7 +7,7 @@ import { renderAST } from './htm';
 
 type Handler = (handlerOptions: HandlerOptions) => Promise<any>;
 type Options = {
-	onDelete: ({ payload }: { payload: UiHookPayload }) => void;
+	onDelete?: ({ payload }: { payload: UiHookPayload }) => void;
 };
 
 function getWelcomeMessage() {
@@ -48,7 +48,7 @@ function getWelcomeMessage() {
 	`;
 }
 
-export function withUiHook(handler: Handler, options: Options) {
+export function withUiHook(handler: Handler, options?: Options) {
 	return async function(req: IncomingMessage, res: ServerResponse) {
 		const payload = (await getJsonBody(req)) as UiHookPayload;
 
@@ -70,7 +70,7 @@ export function withUiHook(handler: Handler, options: Options) {
 			return send(res, 200, getWelcomeMessage());
 		}
 
-		if (req.method === 'DELETE') {
+		if (req.method === 'DELETE' && options && options.onDelete) {
 			options.onDelete({ payload });
 			return send(res, 200);
 		}
