@@ -6,6 +6,9 @@ import uid from 'uid-promise';
 import { renderAST } from './htm';
 
 type Handler = (handlerOptions: HandlerOptions) => Promise<any>;
+type Options = {
+	onDelete: ({ payload }: { payload: UiHookPayload }) => void;
+};
 
 function getWelcomeMessage() {
 	return `
@@ -42,11 +45,13 @@ function getWelcomeMessage() {
 				</p>
 			</body>
 		</html>
-	`
+	`;
 }
 
-export function withUiHook(handler: Handler) {
+export function withUiHook(handler: Handler, options: Options) {
 	return async function(req: IncomingMessage, res: ServerResponse) {
+		const payload = (await getJsonBody(req)) as UiHookPayload;
+
 		res.setHeader('Access-Control-Allow-Origin', '*');
 		res.setHeader(
 			'Access-Control-Allow-Methods',
@@ -65,14 +70,30 @@ export function withUiHook(handler: Handler) {
 			return send(res, 200, getWelcomeMessage());
 		}
 
+		if (req.method === 'DELETE') {
+			options.onDelete({ payload });
+			return send(res, 200);
+		}
+
 		if (req.method !== 'POST') {
 			return send(res, 404, '404 - Not Found');
 		}
 
 		try {
-			const payload = (await getJsonBody(req)) as UiHookPayload;
-			const { token, teamId, slug, integrationId, configurationId} = payload;
-			const zeitClient = new ZeitClient({ token, teamId, slug, integrationId, configurationId });
+			const {
+				token,
+				teamId,
+				slug,
+				integrationId,
+				configurationId
+			} = payload;
+			const zeitClient = new ZeitClient({
+				token,
+				teamId,
+				slug,
+				integrationId,
+				configurationId
+			});
 			const output = await handler({ payload, zeitClient });
 			if (output.isAST === true) {
 				const renderedAST = renderAST(output);
