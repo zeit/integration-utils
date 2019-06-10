@@ -43,17 +43,7 @@ function escapeContent(node: any) {
 
 function escapePropValue(value: any) {
 	const stringValue = String(value);
-	var map: { [key: string]: string } = {
-		'&': '&amp;',
-		'<': '&lt;',
-		'>': '&gt;',
-		'"': '&quot',
-		"'": "'"
-	};
-
-	return stringValue.replace(/[&<>"']/g, function(m) {
-		return map[m];
-	});
+	return `{${JSON.stringify(stringValue)}}`;
 }
 
 function escapePropName(value: any) {
@@ -79,7 +69,7 @@ function buildASTNode(type: any, props: any, ...children: any[]) {
 	let propsString = '';
 	Object.keys(props || {}).forEach(name => {
 		const value = props[name];
-		propsString += `${escapePropName(name)}="${escapePropValue(value)}" `;
+		propsString += `${escapePropName(name)}=${escapePropValue(value)} `;
 	});
 
 	return {
