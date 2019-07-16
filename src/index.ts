@@ -42,7 +42,7 @@ function getWelcomeMessage() {
 				</p>
 			</body>
 		</html>
-	`
+	`;
 }
 
 export function withUiHook(handler: Handler) {
@@ -71,8 +71,20 @@ export function withUiHook(handler: Handler) {
 
 		try {
 			const payload = (await getJsonBody(req)) as UiHookPayload;
-			const { token, teamId, slug, integrationId, configurationId} = payload;
-			const zeitClient = new ZeitClient({ token, teamId, slug, integrationId, configurationId });
+			const {
+				token,
+				teamId,
+				slug,
+				integrationId,
+				configurationId
+			} = payload;
+			const zeitClient = new ZeitClient({
+				token,
+				teamId,
+				slug,
+				integrationId,
+				configurationId
+			});
 			const output = await handler({ payload, zeitClient });
 			if (output.isAST === true) {
 				const renderedAST = renderAST(output);
