@@ -34,6 +34,9 @@ export interface UiHookPayload {
 
 export interface FetchOptions extends RequestInit {
 	data?: object;
+	headers?: { [name: string]: string };
+	body?: string;
+	method?: 'GET' | 'PATCH' | 'POST' | 'DELETE'
 }
 
 export { ZeitClient };
