@@ -18,7 +18,7 @@ export default class ZeitClient {
 	}
 
 	fetch(path: string, options: FetchOptions = {}) {
-		let apiPath = `https://zeit.co/api${path}`;
+		let apiPath = `https://vercel.com/api${path}`;
 
 		if (this.options.teamId) {
 			const e = encodeURIComponent;
@@ -121,6 +121,24 @@ export default class ZeitClient {
 				`Error when deleting an env: [${
 					deleteRes.status
 				}] ${await deleteRes.text()}`
+			);
+		}
+	}
+
+	async addConfigurationToProject(projectId: string) {
+		const addConfigRes = await this.fetch(`/integrations/configuration/add-to-project`, {
+			method: 'POST',
+			data: {
+				projectId: projectId,
+				configId: this.options.configurationId,
+			}
+		});
+
+		if (addConfigRes.status !== 200) {
+			throw new Error(
+				`Error adding configuration to project: [${
+					addConfigRes.status
+				}] ${await addConfigRes.text()}`
 			);
 		}
 	}
