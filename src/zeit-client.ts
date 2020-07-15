@@ -126,7 +126,7 @@ export default class ZeitClient {
 	}
 
 	async addConfigurationToProject(projectId: string) {
-		const addConfigRes = await this.fetch(`/integrations/configuration/add-to-project`, {
+		const addConfigRes = await this.fetch(`/v1/integrations/configuration/add-to-project`, {
 			method: 'POST',
 			data: {
 				projectId: projectId,
@@ -144,7 +144,7 @@ export default class ZeitClient {
 	}
 
 	async removeConfigurationFromProject(projectId: string) {
-		const removeProjectRes = await this.fetch(`/integrations/configuration/remove-from-project`, {
+		const removeProjectRes = await this.fetch(`/v1/integrations/configuration/remove-from-project`, {
 			method: 'POST',
 			data: {
 				projectId: projectId,
