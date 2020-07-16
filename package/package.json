@@ -1,12 +1,12 @@
 {
  "name": "@vercel/integration-utils",
  "version": "0.6.4",
- "description": "A set of utlities for Vercel Integrtions",
+ "description": "A set of utlities for Vercel Integrations",
  "main": "lib/index.js",
  "files": [
   "lib"
  ],
- "repository": "Vercel/integration-utils",
+ "repository": "vercel/integration-utils",
  "license": "MIT",
  "scripts": {
   "prepublishOnly": "yarn build",

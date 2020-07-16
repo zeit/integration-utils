@@ -1,9 +1,11 @@
 import { RequestInit } from 'node-fetch';
-import ZeitClient from './zeit-client';
+import VercelClient from './vercel-client';
 
 export interface HandlerOptions {
 	payload: UiHookPayload;
-	zeitClient: ZeitClient;
+	vercelClient: VercelClient;
+	// to be removed in future versions
+	zeitClient: VercelClient;
 }
 
 export interface UiHookPayload {
@@ -39,4 +41,4 @@ export interface FetchOptions extends RequestInit {
 	method?: 'GET' | 'PATCH' | 'POST' | 'DELETE'
 }
 
-export { ZeitClient };
+export { VercelClient };
