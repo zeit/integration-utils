@@ -6,7 +6,7 @@
  "files": [
   "lib"
  ],
- "repository": "Vercel/integration-utils",
+ "repository": "vercel/integration-utils",
  "license": "MIT",
  "scripts": {
   "prepublishOnly": "yarn build",
