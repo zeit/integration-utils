@@ -1,7 +1,7 @@
 {
  "name": "@vercel/integration-utils",
  "version": "0.6.4",
- "description": "A set of utlities for Vercel Integrtions",
+ "description": "A set of utilities for Vercel Integrtions",
  "main": "lib/index.js",
  "files": [
   "lib"
