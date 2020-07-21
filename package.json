@@ -1,6 +1,6 @@
 {
  "name": "@vercel/integration-utils",
- "version": "0.6.4",
+ "version": "0.6.5-canary.0",
  "description": "A set of utilities for Vercel Integrations",
  "main": "lib/index.js",
  "files": [
