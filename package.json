@@ -1,12 +1,12 @@
 {
- "name": "@zeit/integration-utils",
+ "name": "@vercel/integration-utils",
  "version": "0.6.4",
- "description": "A set of utlities for ZEIT Integrtions",
+ "description": "A set of utilities for Vercel Integrations",
  "main": "lib/index.js",
  "files": [
   "lib"
  ],
- "repository": "zeit/integration-utils",
+ "repository": "vercel/integration-utils",
  "license": "MIT",
  "scripts": {
   "prepublishOnly": "yarn build",

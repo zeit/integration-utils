@@ -1,7 +1,7 @@
 import { ServerResponse, IncomingMessage } from 'http';
 import { json as getJsonBody, send } from 'micro';
 import { UiHookPayload, HandlerOptions } from './types';
-import ZeitClient from './zeit-client';
+import VercelClient from './vercel-client';
 import uid from 'uid-promise';
 import { renderAST } from './htm';
 
@@ -34,11 +34,11 @@ function getWelcomeMessage() {
 				</style>
 			</head>
 			<body>
-				<h1>This is a ZEIT Integration UIHook!</h1>
+				<h1>This is a Vercel Integration UIHook!</h1>
 				<p>
 					Next, this UIHook needs to accept HTTP POST requests.
 					<br/>
-					To learn more about that, <a href="https://zeit.co/docs/integrations#creating-an-integration/step-3-creating-your-integration">click here</a>.
+					To learn more about that, <a href="https://vercel.com/docs/integrations#creating-an-integration/step-3-creating-your-integration">click here</a>.
 				</p>
 			</body>
 		</html>
@@ -78,14 +78,14 @@ export function withUiHook(handler: Handler) {
 				integrationId,
 				configurationId
 			} = payload;
-			const zeitClient = new ZeitClient({
+			const vercelClient = new VercelClient({
 				token,
 				teamId,
 				slug,
 				integrationId,
 				configurationId
 			});
-			const output = await handler({ payload, zeitClient });
+			const output = await handler({ payload, vercelClient, zeitClient: vercelClient });
 			if (output.isAST === true) {
 				const renderedAST = renderAST(output);
 				return send(res, 200, renderedAST);

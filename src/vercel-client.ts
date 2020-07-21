@@ -10,7 +10,7 @@ interface ClientOptions {
 	slug: string;
 }
 
-export default class ZeitClient {
+export default class VercelClient {
 	options: ClientOptions;
 
 	constructor(options: ClientOptions) {
@@ -46,7 +46,7 @@ export default class ZeitClient {
 		const res = await this.fetch(path, options);
 		if (res.status !== 200) {
 			throw new Error(
-				`Failed ZEIT API call. path: ${path} status: ${
+				`Failed Vercel API call. path: ${path} status: ${
 					res.status
 				} error: ${await res.text()}`
 			);
@@ -126,12 +126,9 @@ export default class ZeitClient {
 	}
 
 	async addConfigurationToProject(projectId: string) {
-		const addConfigRes = await this.fetch(`/integrations/configuration/add-to-project`, {
-			method: 'POST',
-			data: {
-				projectId: projectId,
-				configId: this.options.configurationId,
-			}
+		const configId = this.options.configurationId;
+		const addConfigRes = await this.fetch(`/projects/${projectId}/configuration?configId=${configId}`, {
+			method: 'POST'
 		});
 
 		if (addConfigRes.status !== 200) {
@@ -144,12 +141,9 @@ export default class ZeitClient {
 	}
 
 	async removeConfigurationFromProject(projectId: string) {
-		const removeProjectRes = await this.fetch(`/integrations/configuration/remove-from-project`, {
-			method: 'POST',
-			data: {
-				projectId: projectId,
-				configId: this.options.configurationId,
-			}
+		const configId = this.options.configurationId;
+		const removeProjectRes = await this.fetch(`/projects/${projectId}/configuration?configId=${configId}`, {
+			method: 'DELETE'
 		});
 
 		if (removeProjectRes.status !== 200) {
