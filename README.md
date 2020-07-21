@@ -1,35 +1,35 @@
-# @zeit/integration-utils
+# @vercel/integration-utils
 
-[![npm](https://badgen.net/npm/v/@zeit/integration-utils)](https://www.npmjs.com/package/@zeit/integration-utils) [![install size](https://badgen.net/packagephobia/install/@zeit/integration-utils)](https://packagephobia.now.sh/result?p=@zeit/integration-utils) [![cicleci](https://badgen.net/circleci/github/zeit/integration-utils)](https://circleci.com/gh/zeit/workflows/integration-utils) [![codecov](https://badgen.net/codecov/c/github/zeit/integration-utils)](https://circleci.com/gh/zeit/workflows/integration-utils)
+[![npm](https://badgen.net/npm/v/@vercel/integration-utils)](https://www.npmjs.com/package/@vercel/integration-utils) [![install size](https://badgen.net/packagephobia/install/@vercel/integration-utils)](https://packagephobia.now.sh/result?p=@vercel/integration-utils) [![cicleci](https://badgen.net/circleci/github/vercel/integration-utils)](https://circleci.com/gh/vercel/workflows/integration-utils) [![codecov](https://badgen.net/codecov/c/github/vercel/integration-utils)](https://circleci.com/gh/vercel/workflows/integration-utils)
 
-A set of utilies for ZEIT Integrations.<br/>
-Vist https://zeit.co/docs/integrations for more details.
+A set of utilies for Vercel Integrations.<br/>
+Vist https://vercel.com/docs/integrations for more details.
 
 ## Install
 
 ```
-yarn add @zeit/integrations
+yarn add @vercel/integrations
 ```
 
-## Middleware for Micro / Now v2
+## Middleware for Micro / Vercel
 
-This middleware helps to write UiHook for ZEIT integrations easily.
+This middleware helps to write UiHook for Vercel integrations easily.
 ```js
-const {withUiHook} = require('@zeit/integration-utils');
+const {withUiHook} = require('@vercel/integration-utils');
 
 module.exports = withUiHook(async (options) => {
-	const {payload, zeitClient} = options;
+	const {payload, vercelClient} = options;
 	const {action, clientState} = payload;
-	let metadata = await zeitClient.getMetadata();
+	let metadata = await vercelClient.getMetadata();
 
 	if (action === 'submit') {
 		metadata = clientState;
-		await zeitClient.setMetadata(metadata);
+		await vercelClient.setMetadata(metadata);
 	}
 
 	if (action === 'reset') {
 		metadata = {};
-		await zeitClient.setMetadata(metadata);
+		await vercelClient.setMetadata(metadata);
 	}
 
 	return `
@@ -51,6 +51,5 @@ module.exports = withUiHook(async (options) => {
 This middleware calls the handler with an object containing following entities:
 
 * [payload](./src/types.ts#L9) - the information related uiHook
-* [zeitClient](./src/zeit-client.ts) - initialized API client for ZEIT with some helpers
-
+* [vercelClient](./src/vercel-client.ts) - initialized API client for Vercel with some helpers
 
