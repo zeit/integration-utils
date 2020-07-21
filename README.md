@@ -11,7 +11,7 @@ Vist https://vercel.com/docs/integrations for more details.
 yarn add @vercel/integrations
 ```
 
-## Middleware for Micro / Now v2
+## Middleware for Micro / Vercel
 
 This middleware helps to write UiHook for Vercel integrations easily.
 ```js
