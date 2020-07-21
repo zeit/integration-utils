@@ -1,6 +1,6 @@
-# @vercel/integration-utils
+# integration-utils
 
-[![npm](https://badgen.net/npm/v/@vercel/integration-utils)](https://www.npmjs.com/package/@vercel/integration-utils) [![install size](https://badgen.net/packagephobia/install/@vercel/integration-utils)](https://packagephobia.now.sh/result?p=@vercel/integration-utils) [![cicleci](https://badgen.net/circleci/github/vercel/integration-utils)](https://circleci.com/gh/vercel/workflows/integration-utils) [![codecov](https://badgen.net/codecov/c/github/vercel/integration-utils)](https://circleci.com/gh/vercel/workflows/integration-utils)
+[![npm](https://badgen.net/npm/v/@vercel/integration-utils)](https://www.npmjs.com/package/@vercel/integration-utils) [![install size](https://badgen.net/packagephobia/install/@vercel/integration-utils)](https://packagephobia.now.sh/result?p=@vercel/integration-utils)
 
 A set of utilies for Vercel Integrations.<br/>
 Vist https://vercel.com/docs/integrations for more details.
