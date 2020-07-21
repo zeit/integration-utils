@@ -15,7 +15,7 @@ yarn add @vercel/integrations
 
 This middleware helps to write UiHook for Vercel integrations easily.
 ```js
-const {withUiHook} = require('@zeit/integration-utils');
+const {withUiHook} = require('@vercel/integration-utils');
 
 module.exports = withUiHook(async (options) => {
 	const {payload, vercelClient} = options;
