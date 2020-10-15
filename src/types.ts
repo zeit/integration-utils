@@ -4,6 +4,7 @@ import VercelClient from './vercel-client';
 export interface HandlerOptions {
 	payload: UiHookPayload;
 	vercelClient: VercelClient;
+	installationComplete?: () => void;
 	// to be removed in future versions
 	zeitClient: VercelClient;
 }
@@ -32,6 +33,7 @@ export interface UiHookPayload {
 		name: string;
 		description: string;
 	} | null;
+	installing?: boolean;
 }
 
 export interface FetchOptions extends RequestInit {

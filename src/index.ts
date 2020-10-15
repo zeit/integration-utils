@@ -45,6 +45,8 @@ function getWelcomeMessage() {
 	`;
 }
 
+class InstallationCompleteSignal {}
+
 export function withUiHook(handler: Handler) {
 	return async function(req: IncomingMessage, res: ServerResponse) {
 		res.setHeader('Access-Control-Allow-Origin', '*');
@@ -76,8 +78,10 @@ export function withUiHook(handler: Handler) {
 				teamId,
 				slug,
 				integrationId,
-				configurationId
+				configurationId,
+				installing
 			} = payload;
+
 			const vercelClient = new VercelClient({
 				token,
 				teamId,
@@ -85,7 +89,16 @@ export function withUiHook(handler: Handler) {
 				integrationId,
 				configurationId
 			});
-			const output = await handler({ payload, vercelClient, zeitClient: vercelClient });
+
+			const installationComplete = installing ? () => new InstallationCompleteSignal() : undefined
+
+			const output = await handler({ payload, vercelClient, zeitClient: vercelClient, installationComplete });
+
+			if(output instanceof InstallationCompleteSignal) {
+				res.setHeader('x-vercel-integration-installation-complete', '1')
+				return send(res, 200, renderAST(null))
+			}
+
 			if (output.isAST === true) {
 				const renderedAST = renderAST(output);
 				return send(res, 200, renderedAST);
