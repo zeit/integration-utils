@@ -96,7 +96,7 @@ export function withUiHook(handler: Handler) {
 
 			if(output instanceof InstallationCompleteSignal) {
 				res.setHeader('x-vercel-integration-installation-complete', '1')
-				return send(res, 200, renderAST(null))
+				return send(res, 200, 'Installation Complete')
 			}
 
 			if (output.isAST === true) {
